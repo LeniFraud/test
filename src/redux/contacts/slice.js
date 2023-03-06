@@ -16,6 +16,7 @@ const initialState = {
     items: null,
     isLoading: false,
     error: null,
+    isShowModal: false,
   },
   filter: '',
 };
@@ -28,6 +29,10 @@ const contactsSlice = createSlice({
   reducers: {
     filterChange: (state, action) => {
       state.filter = action.payload;
+    },
+
+    toggleModal: state => {
+      state.isShowModal = !state.isShowModal;
     },
   },
 
@@ -58,4 +63,4 @@ const contactsSlice = createSlice({
 
 export const contactsReducer = contactsSlice.reducer;
 
-export const { filterChange } = contactsSlice.actions;
+export const { filterChange, toggleModal } = contactsSlice.actions;
