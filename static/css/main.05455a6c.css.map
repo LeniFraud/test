@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.05455a6c.css","mappings":"AAAA,8BACE,YAAa,CACb,OACF","sources":["components/Pagination/Pagination.module.css"],"sourcesContent":[".pagination {\n  display: flex;\n  gap: 8px;\n}\n"],"names":[],"sourceRoot":""}
