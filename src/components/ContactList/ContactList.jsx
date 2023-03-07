@@ -1,21 +1,27 @@
 import { useSelector } from 'react-redux';
 import {
   selectContacts,
+  selectContactsOffset,
+  selectContactsPerPage,
   selectIsLoading,
   selectVisibleContacts,
 } from 'redux/contacts/selectors';
-import { ContactListItem, Notification } from 'components';
+import { ContactListItem, Notification, Pagination } from 'components';
 import { List } from './ContactList.styled';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
+  const contactOffset = useSelector(selectContactsOffset);
+  const contactsPerPage = useSelector(selectContactsPerPage);
+  const endOffset = contactOffset + contactsPerPage;
   const visibleContacts = useSelector(selectVisibleContacts);
+  const currentContacts = visibleContacts?.slice(contactOffset, endOffset);
 
   return (
     <>
       <List>
-        {visibleContacts?.map(contact => (
+        {currentContacts?.map(contact => (
           <ContactListItem key={contact.id} contact={contact} />
         ))}
       </List>
@@ -25,6 +31,7 @@ export const ContactList = () => {
       {!!contacts?.length && !visibleContacts.length && (
         <Notification message="No contacts found..." />
       )}
+      <Pagination />
     </>
   );
 };

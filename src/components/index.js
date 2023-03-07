@@ -8,3 +8,4 @@ export * from './Notification/Notification';
 export * from './RegisterForm/RegisterForm';
 export * from './AddButton/AddButton';
 export * from './ModalContainer/ModalContainer';
+export * from './Pagination/Pagination';

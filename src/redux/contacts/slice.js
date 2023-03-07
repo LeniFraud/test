@@ -13,7 +13,9 @@ const handleRejected = (state, action) => {
 
 const initialState = {
   contacts: {
-    items: null,
+    items: [],
+    perPage: 5,
+    offset: 0,
     isLoading: false,
     error: null,
     isShowModal: false,
@@ -33,6 +35,10 @@ const contactsSlice = createSlice({
 
     toggleModal: state => {
       state.isShowModal = !state.isShowModal;
+    },
+
+    setNewOffset: (state, action) => {
+      state.contacts.offset = action.payload;
     },
   },
 
@@ -63,4 +69,5 @@ const contactsSlice = createSlice({
 
 export const contactsReducer = contactsSlice.reducer;
 
-export const { filterChange, toggleModal } = contactsSlice.actions;
+export const { filterChange, toggleModal, setNewOffset } =
+  contactsSlice.actions;
